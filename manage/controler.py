@@ -39,11 +39,11 @@ class controler:
     def print_guest(self):
         aux = ''
         for i in self.repo.listg:
-            aux += str(i)
+            aux += str(i) +'\n'
         return aux
 
     def add_room(self, aux):  # aux e de tip zimmer
-        self.repo.listz.hinfugen(aux)
+        self.repo.listz.append(aux)
 
     def change_price(self, nr, preis):
         for i in range(len(self.repo.listz)):
@@ -63,7 +63,7 @@ class controler:
 
     def no_reserv_guest(self):
         for i in self.repo.listg:
-            if len(i.reserv) != 0:
+            if len(i.reserv) == 0:
                 print(i)
 
     def today_valid(self):
@@ -105,6 +105,7 @@ class controler:
         if gast not in self.repo.listg:
             self.repo.listg.append(gast)
         self.repo.listg[self.repo.listg.index(gast)].reserv.append(aux)
+        preis=0
         for i in self.repo.listz:
             if i.nummer == aux.zimmer:
                 preis = i.preis

@@ -5,10 +5,10 @@ class gast():
         self.__reserv = []
 
     def __str__(self):
-        return "{} {}".format(self.__vorname, self.__nachname, len(self.__reserv))
+        return "{} {} {}".format(self.__vorname, self.__nachname, len(self.__reserv))
 
     def __repr__(self):
-        return "{} {}".format(self.__vorname, self.__nachname, len(self.__reserv))
+        return "{} {} {}".format(self.__vorname, self.__nachname, len(self.__reserv))
 
     def __eq__(self, other):
         return self.__vorname == other.__vorname and self.__nachname == other.__nachname

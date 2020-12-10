@@ -4,6 +4,7 @@ from entity.data import data
 from entity.zimmer import zimmer
 from manage.repository import repo
 from manage.controler import controler
+import time
 
 ui = """
         1- Load data
@@ -38,17 +39,18 @@ def test_string(aux):
 
 
 def test_room(nr):
+
     for i in control.repo.listz:
         if i.nummer == nr:
             return None
-    return Exception("invalid room")
+    raise Exception("invalid room")
 
 
 def convert_date(s):
     if not (s[2] == '/' and s[5] == '/'):
-        return Exception("invalid date")
+        raise Exception("invalid date")
     if not (s[:2].isdigit() and s[3:5].isdigit() and s[6:].isdigit()):
-        return Exception("invalid date")
+        raise Exception("invalid date")
     Monat = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
     d = int(s[:2])
     m = int(s[3:5])
@@ -58,7 +60,7 @@ def convert_date(s):
     if y % 400 == 0:
         Monat[1] = 29
     if d > Monat[m - 1]:
-        return Exception("invalid date")
+        raise Exception("invalid date")
     return data(d, m, y)
 
 
@@ -76,7 +78,7 @@ def main():
             test_string(name)
             vorname = input('name: ')
             test_string(vorname)
-            control.add_guest(gast(vorname, nachname))
+            control.add_guest(gast(vorname, name))
         elif opt == "4":
             name = input('surname: ')
             test_string(name)
@@ -116,15 +118,17 @@ def main():
         elif opt == "10":
             print(control.print_rooms())
         elif opt == "11":
-            name = input('nachname:')
+            name = input('surname:')
             test_string(name)
-            vorname = input('vorname: ')
+            vorname = input('name: ')
             test_string(vorname)
-            nr = int(input("Welches Zimmer möchten Sie mieten? "))
+            nr = int(input("Which room would you like to rent? "))
             test_room(nr)
-            start = convert_date(input("von [dd/mm/yyyy]: "))
-            end = convert_date(input("bis [dd/mm/yyyy]: "))
-            control.make_reservation(gast(vorname, nachname), reservierung(nr, start, end))
+            start = input("von [dd/mm/yyyy]: ")
+            start = convert_date(start)
+            end = input("bis [dd/mm/yyyy]: ")
+            end = convert_date(end)
+            control.make_reservation(gast(vorname, name), reservierung(nr, start, end))
         elif opt == "12":
             control.no_reserv_guest()
         elif opt == "13":
@@ -146,16 +150,17 @@ def main():
                 c = 3
             else:
                 print("Invalid syntax")
+            print("Your options are the rooms",end=" ")
             print(control.filter_room(preis, m, c))
         elif opt == "14":
             aux = control.available_today()
             print("The rooms available today are:")
             for i in aux:
-                print(aux, end=' ')
+                print(i)
         elif opt == "15":
-            name = input('nachname:')
+            name = input('surname:')
             test_string(name)
-            vorname = input('vorname: ')
+            vorname = input('name: ')
             test_string(vorname)
             aux = gast(vorname, name)
             if aux not in control.repo.listg:
@@ -166,23 +171,25 @@ def main():
                     print("You have the following reservations: ")
                     nr = 1
                     for j in control.repo.listg[i].reserv:
-                        print(nr + ". " + str(j))
+                        print(str(nr) + ". " + str(j))
                         nr += 1
                     pick = input((f"Which one would you like to delete[1-{nr - 1}]"))
                     if not pick.isdigit():
                         print("Invalid input")
                         continue
                     else:
-                        pick = int(pick)
+                        pick = int(pick)-1
                         if pick < len(control.repo.listg[i].reserv):
-                            control.cancel(aux, pick - 1)
+                            control.cancel(aux, pick)
                         else:
                             print("Invalid input")
+            print("Done")
         elif opt == "16":
             print('Exiting')
             break
         else:
             print("Invalid option\nPick a number from [1,16]")
+
         print("\n\n")
 
     control.print_guest()

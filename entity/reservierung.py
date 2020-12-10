@@ -1,6 +1,8 @@
 class reservierung():
     def __init__(self, zimmer, anfang, ende):
         self.__zimmer= zimmer
+        if ende<anfang:
+            raise AssertionError("invalid dates")
         self.__anfang= anfang
         self.__ende= ende
 
