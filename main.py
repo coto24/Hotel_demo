@@ -4,7 +4,6 @@ from entity.data import data
 from entity.zimmer import zimmer
 from manage.repository import repo
 from manage.controler import controler
-import time
 
 ui = """
         1- Load data
@@ -173,7 +172,7 @@ def main():
                     for j in control.repo.listg[i].reserv:
                         print(str(nr) + ". " + str(j))
                         nr += 1
-                    pick = input((f"Which one would you like to delete[1-{nr - 1}]"))
+                    pick = input(f"Which one would you like to delete[1-{nr - 1}]")
                     if not pick.isdigit():
                         print("Invalid input")
                         continue
