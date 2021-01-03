@@ -1,4 +1,6 @@
 from tkinter import *
+import tkinter.filedialog
+import os
 from ui.mainUI import MainMenu
 #from mainUI import MainMenu
 #from ui import Test
@@ -6,6 +8,7 @@ from ui.mainUI import MainMenu
 def main():
 
     root = Tk()
+
     '''
     g = MenuGaste(root)
     g.draw_window()

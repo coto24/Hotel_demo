@@ -8,21 +8,23 @@ class repo:
     def __init__(self):
         self.__listg = []
         self.__listz = []
+        self.guest="data/gast.txt"
+        self.room="data/zimmer.txt"
 
     def storeToFile(self):
-        with open("data/gast.txt", "wb") as f:
+        with open(self.guest, "wb") as f:
             pickle.dump(self.__listg,f)
         f.close()
-        with open("data/zimmer.txt", "wb") as f:
+        with open(self.room, "wb") as f:
             pickle.dump(self.__listz,f)
         f.close()
 
 
     def loadFromFile(self):
-        with open("data/gast.txt","rb") as f:
+        with open(self.guest,"rb") as f:
             self.__listg = pickle.load(f)
         f.close()
-        with open("data/zimmer.txt","rb") as f:
+        with open(self.room,"rb") as f:
             self.__listz = pickle.load(f)
         f.close()
 
