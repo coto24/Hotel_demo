@@ -7,9 +7,9 @@ class zimmer():
             self.__meerblick = meerblick # 1 sau 0
 
     def __str__(self):
-        return "Room {} can host {} persons, has the price of {}$/night, has the color of the walls {} and {}".format(self.__nummer, self.__amg,self.__preis,self.__farbe,'has seaview' if self.__meerblick==1 else "doesn't have seaview")
+        return "Room {} can host {} persons, has the price of {}€/night, the color of the walls is {} and {}".format(self.__nummer, self.__amg,self.__preis,self.__farbe,'has seaview' if self.__meerblick==1 else "doesn't have seaview")
     def __repr__(self):
-        return "Room {} can host {} persons, has the price of {}$/night, has the color of the walls {} and {}".format(self.__nummer, self.__amg,self.__preis,self.__farbe,'has seaview' if self.__meerblick==1 else "doesn't have seaview")
+        return "Room {} can host {} persons, has the price of {}€/night, the color of the walls is {} and {}".format(self.__nummer, self.__amg,self.__preis,self.__farbe,'has seaview' if self.__meerblick==1 else "doesn't have seaview")
     def __eq__(self, other):
         return self.__nummer==other.__nummer
     @property

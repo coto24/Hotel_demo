@@ -1,10 +1,11 @@
 from datetime import date
 from entity.data import data
 from entity.zimmer import zimmer
+from tkinter import *
 
 heute = data(date.today().day, date.today().month, date.today().year)
 
-class controler:
+class Controler:
     def __init__(self, repo):
         self.__repo = repo
 
@@ -36,11 +37,13 @@ class controler:
             if self.repo.listg[i] == aux:
                 self.repo.listg.pop(i)
 
-    def print_guest(self):
+    def print_guests(self):
         aux = ''
-        for i in self.repo.listg:
-            aux += str(i) +'\n'
-        return aux
+        if len(self.repo.listg)!=0:
+            for i in self.repo.listg:
+                aux += str(i) +'\n'
+            return aux
+        return 'None'
 
     def add_room(self, aux):  # aux e de tip zimmer
         self.repo.listz.append(aux)
@@ -57,14 +60,21 @@ class controler:
 
     def print_rooms(self):
         aux = ''
-        for i in self.repo.listz:
-            aux += str(i) + '\n'
-        return aux
+        if len(self.repo.listz) != 0:
+            for i in self.repo.listz:
+                aux += str(i) + '\n'
+            return aux
+        return 'None'
 
     def no_reserv_guest(self):
+        aux=''
         for i in self.repo.listg:
             if len(i.reserv) == 0:
-                print(i)
+                aux+= str(i)
+        if not aux == '':
+            return aux
+        else:
+            return 'None'
 
     def today_valid(self):
         for i in self.repo.listg:
@@ -76,7 +86,7 @@ class controler:
         # 1 mai scump de x euro
         # 2 mai ieftin de x euro
         # 3 de x euro
-        aux = ''
+        aux = 'The room(s) according to your criteria: '
         for i in self.repo.listz:
             if i.preis > p and c == 1 and m == i.meerblick:
                 aux += str(i.nummer) + ' '
@@ -84,7 +94,10 @@ class controler:
                 aux += str(i.nummer) + ' '
             if i.preis == p and c == 3 and m == i.meerblick:
                 aux += str(i.nummer) + ' '
-        return aux
+        if aux != '':
+            return aux
+        else:
+            return 'None'
 
     def available_today(self):
         aux = []
@@ -94,14 +107,22 @@ class controler:
             for j in i.reserv:
                 if j.zimmer in aux and (heute < j.ende or heute == j.ende) and (heute < j.ende or heute == j.ende):
                     aux.remove(j.zimmer)
-        return aux
+        if len(aux)>0:
+            return str(aux)[1:-1].replace("'","")
+        else:
+            return 'None'
 
-    def cancel(self, aux, nr_ord):  # aux tip gast
-        for i in range(len(self.repo.listg)):
-            if self.repo.listg[i] == aux:
-                self.repo.listg[i].reserv.pop(nr_ord)
+    def cancel(self, indx,option,opt,btn):
+        nr_ord=int(option.get()) - 1
+        if nr_ord<len(self.repo.listg[indx].reserv):
+            self.repo.listg[indx].reserv.pop(nr_ord)
+        else:
+            raise ValueError
+        option.destroy()
+        opt.destroy()
+        btn.destroy()
 
-    def make_reservation(self, gast, aux):  # aux e de tip reservierung
+    def make_reservation(self, aux, gast):  # aux e de tip reservierung
         if gast not in self.repo.listg:
             self.repo.listg.append(gast)
         self.repo.listg[self.repo.listg.index(gast)].reserv.append(aux)
@@ -109,4 +130,16 @@ class controler:
         for i in self.repo.listz:
             if i.nummer == aux.zimmer:
                 preis = i.preis
-        print("Sie müssen {} € bezahlen".format((aux.ende - aux.anfang) * preis))
+        return "Sie müssen {} € bezahlen".format((aux.ende - aux.anfang) * preis)
+
+    def print_reserv(self, indx):
+        aux=''
+        nr=1
+        for i in self.repo.listg[indx].reserv:
+            aux+=str(nr)+' '+str(i)
+            nr+=1
+        return aux
+
+    def transform(self, aux):
+        aux= aux.split('/')
+        return data(int(aux[0]),int(aux[1]),int(aux[2]))
