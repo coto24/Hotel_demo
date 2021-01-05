@@ -1,7 +1,6 @@
 from datetime import date
 from entity.data import data
-from entity.zimmer import zimmer
-from tkinter import *
+
 
 heute = data(date.today().day, date.today().month, date.today().year)
 
@@ -70,7 +69,7 @@ class Controler:
         aux=''
         for i in self.repo.listg:
             if len(i.reserv) == 0:
-                aux+= str(i)
+                aux+= str(i)+'\n'
         if not aux == '':
             return aux
         else:
@@ -130,13 +129,13 @@ class Controler:
         for i in self.repo.listz:
             if i.nummer == aux.zimmer:
                 preis = i.preis
-        return "Sie müssen {} € bezahlen".format((aux.ende - aux.anfang) * preis)
+        return "You have to pay {} €".format((aux.ende - aux.anfang) * preis)
 
     def print_reserv(self, indx):
         aux=''
         nr=1
         for i in self.repo.listg[indx].reserv:
-            aux+=str(nr)+' '+str(i)
+            aux+=str(nr)+' '+str(i)+'\n'
             nr+=1
         return aux
 

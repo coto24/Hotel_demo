@@ -1,7 +1,3 @@
-from entity.gast import gast
-from entity.zimmer import zimmer
-from entity.reservierung import reservierung
-from entity.data import data
 import pickle
 
 class repo:

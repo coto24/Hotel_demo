@@ -18,41 +18,42 @@ class MenuGaste:
 
         # butoane pt add_guest
         btn = Button(self.__window, text='Add guest', command=self.__createGuest, bg="lightsteelblue")
-        btn.grid(column=0, row=0)
+        btn.grid(column=0, row=0, padx=(30,3), pady=2)
         nachname = Label(self.__window, text='Last Name', bg="lightsteelblue", font=('arial', 9, 'bold'), relief=RIDGE)
-        nachname.grid(column=1, row=1)
+        nachname.grid(column=1, row=1, pady=2)
         self.__Gast_name_txt.grid(column=2, row=1)
         vorname = Label(self.__window, text='First Name', bg="lightsteelblue", font=('arial', 9, 'bold'), relief=RIDGE)
-        vorname.grid(column=1, row=2)
+        vorname.grid(column=1, row=2, pady=2)
         self.__Gast_vorname_txt.grid(column=2, row=2)
 
         # butoane pt update_guest
         btn2 = Button(self.__window, text='Update the Last name', command=self.__updateGuestName, bg="lightsteelblue")
-        btn2.grid(column=1, row=0)
+        btn2.grid(column=1, row=0, padx=3, pady=2)
         nachname_neu = Label(self.__window, text='New Last Name', bg="lightsteelblue", font=('arial', 9, 'bold'),
                              relief=RIDGE)
-        nachname_neu.grid(column=1, row=5)
-        self.__Gast_nameneu_txt.grid(column=2, row=5)
+        nachname_neu.grid(column=1, row=5, pady=2)
+        self.__Gast_nameneu_txt.grid(column=2, row=5, pady=2)
 
         # butoane pt delete_guest
         btn3 = Button(self.__window, text='Delete guest from list', command=self.__deleteGuest, bg="lightsteelblue")
-        btn3.grid(column=2, row=0)
+        btn3.grid(column=2, row=0, padx=3, pady=2)
 
         # butoane pt print_guests
         btn4 = Button(self.__window, text='Print all the guests', command=self.__Print, bg="lightsteelblue")
-        btn4.grid(column=3, row=0)
+        btn4.grid(column=3, row=0, padx=3, pady=2)
 
         # quit button
         aux = Label(self.__window, text="                                     ", bg="cadet blue")
         aux.grid(column=1, row=6)
         btn5 = Button(self.__window, text='Quit', command=self.__QuitWindow, bg="lightsteelblue")
-        btn5.grid(column=0, row=7)
+        btn5.grid(column=2, row=7, pady=7)
+
 
         # save/load buttons
         savebtn = Button(self.__window, text='Save data', command=self.__SaveData, bg="lightsteelblue")
-        savebtn.grid(column=1, row=6)
+        savebtn.grid(column=1, row=6, pady=4)
         loadbtn = Button(self.__window, text='Load data', command=self.__LoadData, bg="lightsteelblue")
-        loadbtn.grid(column=2, row=6)
+        loadbtn.grid(column=2, row=6, pady=4)
 
     def __createGuest(self):
         Gast = gast(self.__Gast_name_txt.get(), self.__Gast_vorname_txt.get())
@@ -114,60 +115,60 @@ class MenuZimmer:
 
         # butoane pt add_room
         btnr = Button(self.__window, text='Add room', command=self.__createRoom, bg="lightsteelblue")
-        btnr.grid(column=0, row=0)
+        btnr.grid(column=0, row=0, pady=3)
         nummer = Label(self.__window, text='Number', bg="lightsteelblue", font=('arial', 9, 'bold'), relief=RIDGE)
-        nummer.grid(column=2, row=1)
-        self.__Zimmer_nummer_txt.grid(column=3, row=1)
+        nummer.grid(column=2, row=0)
+        self.__Zimmer_nummer_txt.grid(column=3, row=0)
         amg = Label(self.__window, text='Capacity', bg="lightsteelblue", font=('arial', 9, 'bold'), relief=RIDGE)
-        amg.grid(column=2, row=2)
-        self.__Zimmer_amg_txt.grid(column=3, row=2)
+        amg.grid(column=2, row=1)
+        self.__Zimmer_amg_txt.grid(column=3, row=1)
         preis = Label(self.__window, text='Price', bg="lightsteelblue", font=('arial', 9, 'bold'), relief=RIDGE)
-        preis.grid(column=2, row=3)
-        self.__Zimmer_preis_txt.grid(column=3, row=3)
+        preis.grid(column=2, row=2)
+        self.__Zimmer_preis_txt.grid(column=3, row=2)
         farbe = Label(self.__window, text='Color', bg="lightsteelblue", font=('arial', 9, 'bold'), relief=RIDGE)
-        farbe.grid(column=2, row=4)
-        self.__Zimmer_farbe_txt.grid(column=3, row=4)
+        farbe.grid(column=2, row=3)
+        self.__Zimmer_farbe_txt.grid(column=3, row=3)
         meerblick = Label(self.__window, text='Seaview [yes/no]', bg="lightsteelblue", font=('arial', 9, 'bold'),
                           relief=RIDGE)
-        meerblick.grid(column=2, row=5)
-        self.__Zimmer_meerblick_txt.grid(column=3, row=5)
+        meerblick.grid(column=2, row=4)
+        self.__Zimmer_meerblick_txt.grid(column=3, row=4)
 
         # butoane pt change_preis
         btnr2 = Button(self.__window, text='Change price of a room', command=self.__changeprice, bg="lightsteelblue")
-        btnr2.grid(column=0, row=1)
+        btnr2.grid(column=0, row=1, pady=3, padx=2)
         preisneu = Label(self.__window, text='New Price', bg="lightsteelblue", font=('arial', 9, 'bold'), relief=RIDGE)
-        preisneu.grid(column=2, row=6)
-        self.__Zimmer_preisneu_txt.grid(column=3, row=6)
+        preisneu.grid(column=2, row=5)
+        self.__Zimmer_preisneu_txt.grid(column=3, row=5)
 
         # buton pt delete_room
         btnr3 = Button(self.__window, text='Delete room', command=self.__deleteRoom, bg="lightsteelblue")
-        btnr3.grid(column=0, row=2)
+        btnr3.grid(column=0, row=2, pady=3)
 
         # buton pt print_rooms
         btnr4 = Button(self.__window, text='Print Rooms', command=self.__Print, bg="lightsteelblue")
-        btnr4.grid(column=0, row=3)
+        btnr4.grid(column=0, row=3, pady=3)
 
         # butoane pt filter
         btnr5 = Button(self.__window, text='Filter Rooms', command=self.__Filter, bg="lightsteelblue")
-        btnr5.grid(column=0, row=4)
+        btnr5.grid(column=0, row=4, pady=3)
         c = Label(self.__window, text='Filter criteria:', bg="lightsteelblue", font=('arial', 9, 'bold'), relief=RIDGE)
-        c.grid(column=2, row=7)
-        self.__Price_Option_txt.grid(column=3, row=7)
+        c.grid(column=2, row=6)
+        self.__Price_Option_txt.grid(column=3, row=6)
         aux0 = Label(self.__window, text='''Please type in one of: ''', bg="lightsteelblue", font=('arial', 9, 'bold'),
                      relief=RIDGE)
-        aux0.grid(column=2, row=9, padx=10)
+        aux0.grid(column=2, row=8, padx=10)
         aux1 = Label(self.__window, text='''  • More expensive than x ''', bg="lightsteelblue",
                      font=('arial', 9, 'bold'), relief=RIDGE)
-        aux1.grid(column=3, row=8, pady=5)
+        aux1.grid(column=3, row=7, pady=5)
         aux2 = Label(self.__window, text='''  • Less expensive than x ''', bg="lightsteelblue",
                      font=('arial', 9, 'bold'), relief=RIDGE)
-        aux2.grid(column=3, row=9, pady=5)
+        aux2.grid(column=3, row=8, pady=5)
         aux3 = Label(self.__window, text='''  • Exactly x ''', bg="lightsteelblue", font=('arial', 9, 'bold'),
                      relief=RIDGE)
-        aux3.grid(column=3, row=10, pady=5)
+        aux3.grid(column=3, row=9, pady=5)
         aux3 = Label(self.__window, text=''' Replacing x with the desired price''', bg="lightsteelblue",
                      font=('arial', 9, 'bold'), relief=RIDGE)
-        aux3.grid(column=4, row=9, padx=10)
+        aux3.grid(column=4, row=8, padx=10)
         # buton pt quit
         aux4 = Label(self.__window, text="                            ", bg="cadet blue")
         aux4.grid(column=2, row=15)
@@ -176,9 +177,9 @@ class MenuZimmer:
 
         # save/load buttons
         savebtn = Button(self.__window, text='Save data', command=self.__SaveData, bg="lightsteelblue")
-        savebtn.grid(column=0, row=5)
+        savebtn.grid(column=0, row=5, pady=(20,3))
         loadbtn = Button(self.__window, text='Load data', command=self.__LoadData, bg="lightsteelblue")
-        loadbtn.grid(column=0, row=6)
+        loadbtn.grid(column=0, row=6, pady=3)
 
     def __createRoom(self):
         room = zimmer(self.__Zimmer_nummer_txt.get(), self.__Zimmer_amg_txt.get(), self.__Zimmer_preis_txt.get(),
@@ -265,48 +266,48 @@ class MenuReservierung:
 
         # butoane pt make_reservation
         btnR = Button(self.__window, text='Make Reservation', command=self.__makeReservation, bg="lightsteelblue")
-        btnR.grid(column=0, row=0)
+        btnR.grid(column=0, row=0, pady=2, padx=(20,3))
         vorname = Label(self.__window, text='First Name', bg="lightsteelblue", font=('arial', 9, 'bold'), relief=RIDGE)
-        vorname.grid(column=1, row=2)
+        vorname.grid(column=1, row=2, pady=(7,3))
         self.__Reserv_Vorname_txt.grid(column=2, row=2)
         nachname = Label(self.__window, text='Last Name', bg="lightsteelblue", font=('arial', 9, 'bold'), relief=RIDGE)
-        nachname.grid(column=1, row=3)
+        nachname.grid(column=1, row=3,pady=3)
         self.__Reserv_Nachname_txt.grid(column=2, row=3)
         zimmerNummer = Label(self.__window, text='Room Number', bg="lightsteelblue", font=('arial', 9, 'bold'),
                              relief=RIDGE)
-        zimmerNummer.grid(column=1, row=4)
+        zimmerNummer.grid(column=1, row=4,pady=3)
         self.__Reserv_zimmerNummer_txt.grid(column=2, row=4)
         anfang = Label(self.__window, text='First Day (dd/mm/yy)', bg="lightsteelblue", font=('arial', 9, 'bold'),
                        relief=RIDGE)
-        anfang.grid(column=1, row=5)
+        anfang.grid(column=1, row=5,pady=3)
         self.__Reserv_anfang_data_txt.grid(column=2, row=5)
         ende = Label(self.__window, text='Last Day (dd/mm/yy)', bg="lightsteelblue", font=('arial', 9, 'bold'),
                      relief=RIDGE)
-        ende.grid(column=1, row=6)
+        ende.grid(column=1, row=6,pady=3)
         self.__Reserv_ende_data_txt.grid(column=2, row=6)
 
         # butoane pentru no_reserv_guest
         btnR2 = Button(self.__window, text='Print Guests without Reservation', command=self.__PrintNoReserv,
                        bg="lightsteelblue")
-        btnR2.grid(column=1, row=0)
+        btnR2.grid(column=1, row=0, padx=3)
 
         # buton pentru available_today
         btnR3 = Button(self.__window, text='Show rooms available today', command=self.__AvToday, bg="lightsteelblue")
-        btnR3.grid(column=2, row=0)
+        btnR3.grid(column=2, row=0, padx=3)
 
         # buton pentru calcel
         btnR4 = Button(self.__window, text='Cancel Reservation', command=self.__Cancel, bg="lightsteelblue")
-        btnR4.grid(column=3, row=0)
+        btnR4.grid(column=3, row=0, padx=3)
 
         # buton pt quit
         btnR5 = Button(self.__window, text='Quit', command=self.__QuitWindow, bg="lightsteelblue")
-        btnR5.grid(column=3, row=9)
+        btnR5.grid(column=2, row=9, pady=12)
 
         # save/load buttons
         savebtn = Button(self.__window, text='Save data', command=self.__SaveData, bg="lightsteelblue")
-        savebtn.grid(column=1, row=8)
+        savebtn.grid(column=1, row=8,pady=(10,3))
         loadbtn = Button(self.__window, text='Load data', command=self.__LoadData, bg="lightsteelblue")
-        loadbtn.grid(column=2, row=8)
+        loadbtn.grid(column=2, row=8, pady=(10,3))
 
     def __makeReservation(self):
         start = self.__controler.transform(self.__Reserv_anfang_data_txt.get())
@@ -412,9 +413,8 @@ class Test():
 
 
 class MenuHELP:
-    def __init__(self, gui_master, control):
+    def __init__(self, gui_master):
         self.__window = gui_master
-        self.__controler = control
         gui_master.configure(background='Cadet Blue')
 
         about = Button(self.__window, text="About Hotel Arcasu'&CO", command=self.new_windowA, bg="lightsteelblue")
@@ -614,7 +614,7 @@ class MenuHELP:
 class AreYouSure():
     def __init__(self, gui_master):
         self.__window = gui_master
-
+        self.__window.title('Quit Menu')
         label = Label(self.__window, text='Are you sure you want to quit this window?')
         label.grid(column=0, row=0)
 

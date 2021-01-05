@@ -1,6 +1,4 @@
 from tkinter import *
-import tkinter.filedialog
-import os
 from ui.mainUI import MainMenu
 #from mainUI import MainMenu
 #from ui import Test

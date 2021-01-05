@@ -1,7 +1,6 @@
 from tkinter import *
 import tkinter.filedialog
 from ui.ui import MenuGaste, MenuZimmer, MenuReservierung, MenuHELP
-import random
 import tkinter.messagebox
 from manage.controler import Controler
 from manage.repository import repo
@@ -72,13 +71,13 @@ class MainMenu:
         room_window = Toplevel(self.__window)
         self.new = MenuZimmer(room_window, control)
         room_window.title("Menu Rooms")
-        room_window.geometry('700x370')
+        room_window.geometry('750x400')
 
     def __draw_windowR(self):
         rezerv_window = Toplevel(self.__window)
         self.new = MenuReservierung(rezerv_window, control)
         rezerv_window.title("Menu Reservations")
-        rezerv_window.geometry('560x390')
+        rezerv_window.geometry('620x390')
     def __guest(self):
         file = tkinter.filedialog.askopenfile(parent=self.__window, mode='rb', title='Choose a file')
         if file != None:
